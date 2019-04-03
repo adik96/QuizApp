@@ -1,0 +1,18 @@
+<div *ngIf="quiz" class="quiz">
+  <h2>{{quiz.Title}}</h2>
+  <ul>
+    <li>
+      <label>Tytuł:</label>
+      <input [(ngModel)]="quiz.Title" placeholder="Wstaw tytuł..." />
+    </li>
+    <li>
+      <label>Opis:</label>
+      <textarea [(ngModel)]=" quiz.Description"
+                placeholder="Wstaw opis..."></textarea>
+    </li>
+  </ul>
+  <div>
+    <input type="button" value="Edytuj" (click)="onEdit()" />
+    <input type="button" value="Usuń" (click)="onDelete()" />
+  </div>
+</div>

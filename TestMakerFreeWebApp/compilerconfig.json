@@ -1,0 +1,62 @@
+﻿[
+  {
+    "outputFile": "ClientApp/src/app/components/app.component.css",
+    "inputFile": "ClientApp/src/app/components/app.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/about/about.component.css",
+    "inputFile": "ClientApp/src/app/components/about/about.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/answer/answer-edit.component.css",
+    "inputFile": "ClientApp/src/app/components/answer/answer-edit.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/answer/answer-list.component.css",
+    "inputFile": "ClientApp/src/app/components/answer/answer-list.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/home/home.component.css",
+    "inputFile": "ClientApp/src/app/components/home/home.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/login/login.component.css",
+    "inputFile": "ClientApp/src/app/components/login/login.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/nav-menu/nav-menu.component.css",
+    "inputFile": "ClientApp/src/app/components/nav-menu/nav-menu.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/pagenotfound/pagenotfound.component.css",
+    "inputFile": "ClientApp/src/app/components/pagenotfound/pagenotfound.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/question/question-edit.component.css",
+    "inputFile": "ClientApp/src/app/components/question/question-edit.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/question/question-list.component.css",
+    "inputFile": "ClientApp/src/app/components/question/question-list.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/quiz/quiz.component.css",
+    "inputFile": "ClientApp/src/app/components/quiz/quiz.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/quiz/quiz-edit.component.css",
+    "inputFile": "ClientApp/src/app/components/quiz/quiz-edit.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/quiz/quiz-list.component.css",
+    "inputFile": "ClientApp/src/app/components/quiz/quiz-list.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/result/result-edit.component.css",
+    "inputFile": "ClientApp/src/app/components/result/result-edit.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/result/result-list.component.css",
+    "inputFile": "ClientApp/src/app/components/result/result-list.component.less"
+  }
+]
