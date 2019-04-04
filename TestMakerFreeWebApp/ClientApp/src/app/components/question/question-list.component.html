@@ -1,27 +1,38 @@
-<h3>Pytania</h3>
+<h3>Questions</h3>
 <div *ngIf="questions.length > 0">
-  <table class="questions">
-    <thead>
-      <tr>
-        <th>Treść</th>
-        <th>Akcje</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let question of questions">
-        <td>{{question.Text}}</td>
-        <td>
-          <input type="button" value="Edytuj"
-                 (click)="onEdit(question)" />
-          <input type="button" value="Usuń"
-                 (click)="onDelete(question)" />
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover table-striped questions">
+      <thead>
+        <tr>
+          <th>Text</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of questions">
+          <td>{{question.Text}}</td>
+          <td>
+            <button (click)="onEdit(question)"
+                    class="btn btn-xs btn-warning">
+              <span class="glyphicon glyphicon-edit"></span>
+              &nbsp; Edit
+            </button>
+            <button (click)="onDelete(question)"
+                    class="btn btn-xs btn-danger">
+              <span class="glyphicon glyphicon-remove"></span>
+              &nbsp; Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<div *ngIf="questions.length == 0">
-  Ten quiz nie ma (jeszcze) pytań:
-  kliknij <strong>Dodaj pytanie</strong>, aby dodać pierwsze pytanie!
+<div *ngIf="questions.length == 0" class="help-block">
+  This quiz has no questions (yet):
+  click the <strong>Add a new Question</strong> button to add the first one!
 </div>
-<input type="button" value="Dodaj pytanie" (click)="onCreate()" />
+<button (click)="onCreate()" class="btn btn-sm btn-primary">
+  <span class="glyphicon glyphicon-plus"></span>
+  &nbsp; Add a new Question
+</button>

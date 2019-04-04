@@ -1,29 +1,40 @@
-<h3>Odpowiedzi</h3>
+<h3>Answers</h3>
 <div *ngIf="answers.length > 0">
-  <table class="answers">
-    <thead>
-      <tr>
-        <th>Treść</th>
-        <th>Wartość</th>
-        <th>Akcje</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let answer of answers">
-        <td>{{answer.Text}}</td>
-        <td>{{answer.Value}}</td>
-        <td>
-          <input type="button" value="Edytuj"
-                 (click)="onEdit(answer)" />
-          <input type="button" value="Usuń"
-                 (click)="onDelete(answer)" />
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover answers">
+      <thead>
+        <tr>
+          <th>Text</th>
+          <th>Value</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let answer of answers">
+          <td>{{answer.Text}}</td>
+          <td>{{answer.Value}}</td>
+          <td>
+            <button (click)="onEdit(answer)"
+                    class="btn btn-xs btn-warning">
+              <span class="glyphicon glyphicon-edit"></span>
+              &nbsp; Edit
+            </button>
+            <button (click)="onDelete(answer)"
+                    class="btn btn-xs btn-danger">
+              <span class="glyphicon glyphicon-remove"></span>
+              &nbsp; Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div *ngIf="answers.length == 0">
-  To pytanie nie ma (jeszcze) odpowiedzi:
-  kliknij <strong>Dodaj odpowiedź</strong>, aby dodać pierwszą odpowiedź!
+  This questions has no answers (yet):
+  click the <strong>Add a new Answer</strong> button to add the first one!
 </div>
-<input type="button" value="Dodaj odpowiedź" (click)="onCreate()" />
+<button (click)="onCreate()" class="btn btn-sm btn-primary">
+  <span class="glyphicon glyphicon-plus"></span>
+  &nbsp; Add a new Answer
+</button>

@@ -1,17 +1,25 @@
 <h2>{{title}}</h2>
 <div class="question-edit">
-  <div>
-    <label for="text">Treść pytania:</label>
+  <div class="form-group">
+    <label for="text">Question text:</label>
     <br />
-<textarea id="text" [(ngModel)]="question.Text"
-          placeholder="Wpisz odpowiednią treść..."></textarea>
+    <textarea id="text"
+              [(ngModel)]="question.Text"
+              placeholder="enter a suitable text..."
+              class="form-control"></textarea>
   </div>
-  <div>
-    <input *ngIf="editMode" type="button" value="Zapisz zmiany"
-           (click)="onSubmit(question)" />
-    <input *ngIf="!editMode" type="button" value="Utwórz pytanie!"
-           (click)="onSubmit(question)" />
-    <input type="button" value="Anuluj" (click)="onBack()" />
+  <div class="commands">
+    <input *ngIf="editMode" type="button"
+           value="Apply Changes"
+           (click)="onSubmit(question)"
+           class="btn btn-success" />
+    <input *ngIf="!editMode" type="button"
+           value="Create the Question!"
+           (click)="onSubmit(question)"
+           class="btn btn-success" />
+    <input type="button" value="Cancel"
+           (click)="onBack()"
+           class="btn btn-default" />
   </div>
   <answer-list *ngIf="editMode" [question]="question"></answer-list>
 </div>
