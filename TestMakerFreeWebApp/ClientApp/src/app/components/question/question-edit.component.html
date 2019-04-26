@@ -1,25 +1,42 @@
 <h2>{{title}}</h2>
 <div class="question-edit">
-  <div class="form-group">
-    <label for="text">Question text:</label>
-    <br />
-    <textarea id="text"
-              [(ngModel)]="question.Text"
-              placeholder="enter a suitable text..."
-              class="form-control"></textarea>
-  </div>
-  <div class="commands">
-    <input *ngIf="editMode" type="button"
-           value="Apply Changes"
-           (click)="onSubmit(question)"
-           class="btn btn-success" />
-    <input *ngIf="!editMode" type="button"
-           value="Create the Question!"
-           (click)="onSubmit(question)"
-           class="btn btn-success" />
-    <input type="button" value="Cancel"
-           (click)="onBack()"
-           class="btn btn-default" />
-  </div>
-  <answer-list *ngIf="editMode" [question]="question"></answer-list>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group"
+      [ngClass]="{ 'has-error has-feedback' :
+      form.get('Text').errors?.required }">
+      <label for="text">Question text:</label>
+      <br />
+      <textarea id="text"
+                formControlName="Text" required
+                placeholder="enter a suitable text..."
+                class="form-control"></textarea>
+      <span *ngIf="form.get('Text').errors?.required"
+            class="glyphicon glyphicon-remove form-control-feedback"
+            aria-hidden="true"></span>
+      <div *ngIf="(form.get('Text').dirty
+           || form.get('Text').touched)
+           && form.get('Text').errors?.required"
+           class="help-block">
+        To pole jest wymagane — wpisz poprawny tytuł.
+      </div>
+    </div>
+    <div class="commands">
+      <button *ngIf="editMode" type="submit"
+              [disabled]="form.invalid"
+              class="btn btn-success">
+        Zapisz zmiany
+      </button>
+      <button *ngIf="!editMode" type="submit"
+              [disabled]="form.invalid"
+              class="btn btn-success">
+        Utwórz quiz!
+      </button>
+      <button *ngIf="!editMode" type="submit"
+              (click)="onBack()"
+              class="btn btn-default">
+        Anuluj
+      </button>
+    </div>
+  </form>
+    <answer-list *ngIf="editMode" [question]="question"></answer-list>
 </div>

@@ -1,43 +1,57 @@
 <div class="quiz-edit">
   <h2>{{title}}</h2>
-  <div class="form-group">
-    <label for="title">Tytuł quizu:</label>
-    <br />
-    <input type="text" id="title"
-           [(ngModel)]="quiz.Title"
-           placeholder="Wpisz tytuł..."
-           class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="description">Opis quizu:</label>
-    <br />
-    <input type="text" id="description"
-           [(ngModel)]="quiz.Description"
-           placeholder="Wpisz opis..."
-           class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="text">Dodatkowe informacje o quizie:</label>
-    <br />
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group"
+         [ngClass]="{ 'has-error has-feedback' :
+         hasError('Title') }">
+      <label for="title">Tytuł quizu:</label>
+      <br />
+      <input type="text" id="title"
+             formControlName="Title" required
+             placeholder="Wpisz tytuł..."
+             class="form-control" />
+      <span *ngIf="hasError('Title')"
+            class="glyphicon glyphicon-remove form-control-feedback"
+            aria-hidden="true"></span>
+      <div *ngIf="hasError('Title')"
+           class="help-block">
+        To pole jest wymagane — wpisz poprawny tytuł.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Opis quizu:</label>
+      <br />
+      <input type="text" id="description"
+             formControlName="Description"
+             placeholder="Wpisz opis..."
+             class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="text">Dodatkowe informacje o quizie:</label>
+      <br />
 <textarea id="text"
-          [(ngModel)]="quiz.Text"
+          formControlName="Text"
           placeholder="Wpisz tekst..."
           class="form-control"></textarea>
-  </div>
-  <div class="form-group commands">
-    <input *ngIf="editMode" type="button"
-           value="Zapisz zmiany"
-           (click)="onSubmit(quiz)"
-           class="btn btn-success" />
-    <input *ngIf="!editMode" type="button"
-           value="Utwórz quiz!"
-           (click)="onSubmit(quiz)"
-           class="btn btn-success" />
-    <input type="button"
-           value="Anuluj"
-           (click)="onBack()"
-           class="btn btn-default" />
-  </div>
-  <question-list *ngIf="editMode" [quiz]="quiz"></question-list>
-  <result-list *ngIf="editMode" [quiz]="quiz"></result-list>
+    </div>
+    <div class="form-group commands">
+      <button *ngIf="editMode" type="submit"
+              [disabled]="form.invalid"
+              class="btn btn-success">
+        Zapisz zmiany
+      </button>
+      <button *ngIf="!editMode" type="submit"
+              [disabled]="form.invalid"
+              class="btn btn-success">
+        Utwórz quiz!
+      </button>
+      <button *ngIf="!editMode" type="submit"
+              (click)="onBack()"
+              class="btn btn-default">
+        Anuluj
+      </button>
+    </div>
+  </form>
+    <question-list *ngIf="editMode" [quiz]="quiz"></question-list>
+    <result-list *ngIf="editMode" [quiz]="quiz"></result-list>
 </div>
